@@ -18,7 +18,7 @@
     </developers>
 
     <properties>
-        <netty_version>4.1.36.Final</netty_version>
+        <netty_version>4.1.67.Final</netty_version>
     </properties>
 
     <modules>

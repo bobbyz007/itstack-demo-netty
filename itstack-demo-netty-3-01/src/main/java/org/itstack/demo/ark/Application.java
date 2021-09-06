@@ -53,6 +53,7 @@ public class Application implements CommandLineRunner {
         Future<Channel> future = executorService.submit(nettyServer);
         Channel channel = future.get();
         if (null == channel) {
+            nettyServer.destroy();
             throw new RuntimeException("netty server-s open error channel is null");
         }
         while (!channel.isActive()) {
@@ -75,7 +76,7 @@ public class Application implements CommandLineRunner {
             Thread.sleep(500);
         }
         logger.info("启动NettyWsServer服务，完成：{}", wsChannel.localAddress());
-        CacheUtil.serverInfoMap.put(nettyServerPort, new ServerInfo("NettyWsSocket", NetUtil.getHost(), nettyServerPort, new Date()));
+        CacheUtil.serverInfoMap.put(nettyWsServerPort, new ServerInfo("NettyWsSocket", NetUtil.getHost(), nettyWsServerPort, new Date()));
     }
 
 }

@@ -1,4 +1,4 @@
-package org.itstak.demo.ark.test;
+package org.itstack.demo.ark.device;
 
 import com.alibaba.fastjson.JSON;
 import io.netty.bootstrap.Bootstrap;
@@ -24,8 +24,7 @@ import java.util.Date;
  * 公众号：bugstack虫洞栈  ｛获取学习源码｝
  * Create by fuzhengwei on 2019
  */
-public class ApiTest {
-                                      
+public class DeviceApp {
     public static void main(String[] args) {
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {
