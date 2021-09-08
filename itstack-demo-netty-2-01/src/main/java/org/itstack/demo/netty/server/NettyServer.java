@@ -28,7 +28,7 @@ public class NettyServer {
     private final EventLoopGroup childGroup = new NioEventLoopGroup();
     private Channel channel;
 
-    public ChannelFuture bing(InetSocketAddress address) {
+    public ChannelFuture bind(InetSocketAddress address) {
         ChannelFuture channelFuture = null;
         try {
             ServerBootstrap b = new ServerBootstrap();
