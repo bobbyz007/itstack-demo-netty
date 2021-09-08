@@ -9,20 +9,24 @@ public interface MsgBodyOrBuilder extends
 
   /**
    * <code>string channelId = 1;</code>
+   * @return The channelId.
    */
   java.lang.String getChannelId();
   /**
    * <code>string channelId = 1;</code>
+   * @return The bytes for channelId.
    */
   com.google.protobuf.ByteString
       getChannelIdBytes();
 
   /**
    * <code>string msgInfo = 2;</code>
+   * @return The msgInfo.
    */
   java.lang.String getMsgInfo();
   /**
    * <code>string msgInfo = 2;</code>
+   * @return The bytes for msgInfo.
    */
   com.google.protobuf.ByteString
       getMsgInfoBytes();

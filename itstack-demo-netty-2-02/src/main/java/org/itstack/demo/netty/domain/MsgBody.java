@@ -6,7 +6,7 @@ package org.itstack.demo.netty.domain;
 /**
  * Protobuf type {@code org.itstack.demo.netty.domain.MsgBody}
  */
-public  final class MsgBody extends
+public final class MsgBody extends
     com.google.protobuf.GeneratedMessageV3 implements
     // @@protoc_insertion_point(message_implements:org.itstack.demo.netty.domain.MsgBody)
     MsgBodyOrBuilder {
@@ -18,6 +18,13 @@ private static final long serialVersionUID = 0L;
   private MsgBody() {
     channelId_ = "";
     msgInfo_ = "";
+  }
+
+  @java.lang.Override
+  @SuppressWarnings({"unused"})
+  protected java.lang.Object newInstance(
+      UnusedPrivateParameter unused) {
+    return new MsgBody();
   }
 
   @java.lang.Override
@@ -33,7 +40,6 @@ private static final long serialVersionUID = 0L;
     if (extensionRegistry == null) {
       throw new java.lang.NullPointerException();
     }
-    int mutable_bitField0_ = 0;
     com.google.protobuf.UnknownFieldSet.Builder unknownFields =
         com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
@@ -44,13 +50,6 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          default: {
-            if (!parseUnknownFieldProto3(
-                input, unknownFields, extensionRegistry, tag)) {
-              done = true;
-            }
-            break;
-          }
           case 10: {
             java.lang.String s = input.readStringRequireUtf8();
 
@@ -61,6 +60,13 @@ private static final long serialVersionUID = 0L;
             java.lang.String s = input.readStringRequireUtf8();
 
             msgInfo_ = s;
+            break;
+          }
+          default: {
+            if (!parseUnknownField(
+                input, unknownFields, extensionRegistry, tag)) {
+              done = true;
+            }
             break;
           }
         }
@@ -80,6 +86,7 @@ private static final long serialVersionUID = 0L;
     return org.itstack.demo.netty.domain.MsgInfo.internal_static_org_itstack_demo_netty_domain_MsgBody_descriptor;
   }
 
+  @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
     return org.itstack.demo.netty.domain.MsgInfo.internal_static_org_itstack_demo_netty_domain_MsgBody_fieldAccessorTable
@@ -91,7 +98,9 @@ private static final long serialVersionUID = 0L;
   private volatile java.lang.Object channelId_;
   /**
    * <code>string channelId = 1;</code>
+   * @return The channelId.
    */
+  @java.lang.Override
   public java.lang.String getChannelId() {
     java.lang.Object ref = channelId_;
     if (ref instanceof java.lang.String) {
@@ -106,7 +115,9 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <code>string channelId = 1;</code>
+   * @return The bytes for channelId.
    */
+  @java.lang.Override
   public com.google.protobuf.ByteString
       getChannelIdBytes() {
     java.lang.Object ref = channelId_;
@@ -125,7 +136,9 @@ private static final long serialVersionUID = 0L;
   private volatile java.lang.Object msgInfo_;
   /**
    * <code>string msgInfo = 2;</code>
+   * @return The msgInfo.
    */
+  @java.lang.Override
   public java.lang.String getMsgInfo() {
     java.lang.Object ref = msgInfo_;
     if (ref instanceof java.lang.String) {
@@ -140,7 +153,9 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <code>string msgInfo = 2;</code>
+   * @return The bytes for msgInfo.
    */
+  @java.lang.Override
   public com.google.protobuf.ByteString
       getMsgInfoBytes() {
     java.lang.Object ref = msgInfo_;
@@ -156,6 +171,7 @@ private static final long serialVersionUID = 0L;
   }
 
   private byte memoizedIsInitialized = -1;
+  @java.lang.Override
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
     if (isInitialized == 1) return true;
@@ -165,6 +181,7 @@ private static final long serialVersionUID = 0L;
     return true;
   }
 
+  @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     if (!getChannelIdBytes().isEmpty()) {
@@ -176,6 +193,7 @@ private static final long serialVersionUID = 0L;
     unknownFields.writeTo(output);
   }
 
+  @java.lang.Override
   public int getSerializedSize() {
     int size = memoizedSize;
     if (size != -1) return size;
@@ -202,13 +220,12 @@ private static final long serialVersionUID = 0L;
     }
     org.itstack.demo.netty.domain.MsgBody other = (org.itstack.demo.netty.domain.MsgBody) obj;
 
-    boolean result = true;
-    result = result && getChannelId()
-        .equals(other.getChannelId());
-    result = result && getMsgInfo()
-        .equals(other.getMsgInfo());
-    result = result && unknownFields.equals(other.unknownFields);
-    return result;
+    if (!getChannelId()
+        .equals(other.getChannelId())) return false;
+    if (!getMsgInfo()
+        .equals(other.getMsgInfo())) return false;
+    if (!unknownFields.equals(other.unknownFields)) return false;
+    return true;
   }
 
   @java.lang.Override
@@ -297,6 +314,7 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
+  @java.lang.Override
   public Builder newBuilderForType() { return newBuilder(); }
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
@@ -304,6 +322,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder(org.itstack.demo.netty.domain.MsgBody prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
+  @java.lang.Override
   public Builder toBuilder() {
     return this == DEFAULT_INSTANCE
         ? new Builder() : new Builder().mergeFrom(this);
@@ -327,6 +346,7 @@ private static final long serialVersionUID = 0L;
       return org.itstack.demo.netty.domain.MsgInfo.internal_static_org_itstack_demo_netty_domain_MsgBody_descriptor;
     }
 
+    @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return org.itstack.demo.netty.domain.MsgInfo.internal_static_org_itstack_demo_netty_domain_MsgBody_fieldAccessorTable
@@ -349,6 +369,7 @@ private static final long serialVersionUID = 0L;
               .alwaysUseFieldBuilders) {
       }
     }
+    @java.lang.Override
     public Builder clear() {
       super.clear();
       channelId_ = "";
@@ -358,15 +379,18 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
       return org.itstack.demo.netty.domain.MsgInfo.internal_static_org_itstack_demo_netty_domain_MsgBody_descriptor;
     }
 
+    @java.lang.Override
     public org.itstack.demo.netty.domain.MsgBody getDefaultInstanceForType() {
       return org.itstack.demo.netty.domain.MsgBody.getDefaultInstance();
     }
 
+    @java.lang.Override
     public org.itstack.demo.netty.domain.MsgBody build() {
       org.itstack.demo.netty.domain.MsgBody result = buildPartial();
       if (!result.isInitialized()) {
@@ -375,6 +399,7 @@ private static final long serialVersionUID = 0L;
       return result;
     }
 
+    @java.lang.Override
     public org.itstack.demo.netty.domain.MsgBody buildPartial() {
       org.itstack.demo.netty.domain.MsgBody result = new org.itstack.demo.netty.domain.MsgBody(this);
       result.channelId_ = channelId_;
@@ -383,32 +408,39 @@ private static final long serialVersionUID = 0L;
       return result;
     }
 
+    @java.lang.Override
     public Builder clone() {
-      return (Builder) super.clone();
+      return super.clone();
     }
+    @java.lang.Override
     public Builder setField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
         java.lang.Object value) {
-      return (Builder) super.setField(field, value);
+      return super.setField(field, value);
     }
+    @java.lang.Override
     public Builder clearField(
         com.google.protobuf.Descriptors.FieldDescriptor field) {
-      return (Builder) super.clearField(field);
+      return super.clearField(field);
     }
+    @java.lang.Override
     public Builder clearOneof(
         com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-      return (Builder) super.clearOneof(oneof);
+      return super.clearOneof(oneof);
     }
+    @java.lang.Override
     public Builder setRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
         int index, java.lang.Object value) {
-      return (Builder) super.setRepeatedField(field, index, value);
+      return super.setRepeatedField(field, index, value);
     }
+    @java.lang.Override
     public Builder addRepeatedField(
         com.google.protobuf.Descriptors.FieldDescriptor field,
         java.lang.Object value) {
-      return (Builder) super.addRepeatedField(field, value);
+      return super.addRepeatedField(field, value);
     }
+    @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
       if (other instanceof org.itstack.demo.netty.domain.MsgBody) {
         return mergeFrom((org.itstack.demo.netty.domain.MsgBody)other);
@@ -433,10 +465,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    @java.lang.Override
     public final boolean isInitialized() {
       return true;
     }
 
+    @java.lang.Override
     public Builder mergeFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -458,6 +492,7 @@ private static final long serialVersionUID = 0L;
     private java.lang.Object channelId_ = "";
     /**
      * <code>string channelId = 1;</code>
+     * @return The channelId.
      */
     public java.lang.String getChannelId() {
       java.lang.Object ref = channelId_;
@@ -473,6 +508,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <code>string channelId = 1;</code>
+     * @return The bytes for channelId.
      */
     public com.google.protobuf.ByteString
         getChannelIdBytes() {
@@ -489,6 +525,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <code>string channelId = 1;</code>
+     * @param value The channelId to set.
+     * @return This builder for chaining.
      */
     public Builder setChannelId(
         java.lang.String value) {
@@ -502,6 +540,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <code>string channelId = 1;</code>
+     * @return This builder for chaining.
      */
     public Builder clearChannelId() {
       
@@ -511,6 +550,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <code>string channelId = 1;</code>
+     * @param value The bytes for channelId to set.
+     * @return This builder for chaining.
      */
     public Builder setChannelIdBytes(
         com.google.protobuf.ByteString value) {
@@ -527,6 +568,7 @@ private static final long serialVersionUID = 0L;
     private java.lang.Object msgInfo_ = "";
     /**
      * <code>string msgInfo = 2;</code>
+     * @return The msgInfo.
      */
     public java.lang.String getMsgInfo() {
       java.lang.Object ref = msgInfo_;
@@ -542,6 +584,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <code>string msgInfo = 2;</code>
+     * @return The bytes for msgInfo.
      */
     public com.google.protobuf.ByteString
         getMsgInfoBytes() {
@@ -558,6 +601,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <code>string msgInfo = 2;</code>
+     * @param value The msgInfo to set.
+     * @return This builder for chaining.
      */
     public Builder setMsgInfo(
         java.lang.String value) {
@@ -571,6 +616,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <code>string msgInfo = 2;</code>
+     * @return This builder for chaining.
      */
     public Builder clearMsgInfo() {
       
@@ -580,6 +626,8 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <code>string msgInfo = 2;</code>
+     * @param value The bytes for msgInfo to set.
+     * @return This builder for chaining.
      */
     public Builder setMsgInfoBytes(
         com.google.protobuf.ByteString value) {
@@ -592,11 +640,13 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+    @java.lang.Override
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
-      return super.setUnknownFieldsProto3(unknownFields);
+      return super.setUnknownFields(unknownFields);
     }
 
+    @java.lang.Override
     public final Builder mergeUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
       return super.mergeUnknownFields(unknownFields);
@@ -618,6 +668,7 @@ private static final long serialVersionUID = 0L;
 
   private static final com.google.protobuf.Parser<MsgBody>
       PARSER = new com.google.protobuf.AbstractParser<MsgBody>() {
+    @java.lang.Override
     public MsgBody parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
@@ -635,6 +686,7 @@ private static final long serialVersionUID = 0L;
     return PARSER;
   }
 
+  @java.lang.Override
   public org.itstack.demo.netty.domain.MsgBody getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }

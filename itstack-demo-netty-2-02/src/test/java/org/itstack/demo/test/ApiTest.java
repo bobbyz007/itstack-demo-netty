@@ -1,6 +1,7 @@
 package org.itstack.demo.test;
 
-import com.googlecode.protobuf.format.JsonFormat;
+import com.google.protobuf.InvalidProtocolBufferException;
+import com.google.protobuf.util.JsonFormat;
 import org.itstack.demo.netty.domain.MsgBody;
 
 /**
@@ -10,23 +11,24 @@ import org.itstack.demo.netty.domain.MsgBody;
  */
 public class ApiTest {
 
-    public static void main(String[] args) throws JsonFormat.ParseException {
-        System.out.println("hi 微信公众号：bugstack虫洞栈");
+    public static void main(String[] args) throws InvalidProtocolBufferException {
+        System.out.println("protobuf <--> json");
 
         MsgBody.Builder msg = MsgBody.newBuilder();
         msg.setChannelId("abD01223");
         msg.setMsgInfo("hi helloworld");
         MsgBody msgBody = msg.build();
 
-        //protobuf转Json 需要引入protobuf-java-format
-        String msgBodyStr = JsonFormat.printToString(msgBody);
+        //protobuf转Json 需要引入protobuf-java-util
+        String msgBodyStr = JsonFormat.printer().includingDefaultValueFields().print(msgBody);
         System.out.println(msgBodyStr);
 
-        //json转protobuf 需要引入protobuf-java-format
-        JsonFormat.merge("{\"channelId\": \"HBdhi993\",\"msgInfo\": \"hi bugstack虫洞栈\"}", msg);
+        //json转protobuf 需要引入protobuf-java-util
+        msg.clear();
+        JsonFormat.parser().merge("{\"channelId\": \"HBdhi993\",\"msgInfo\": \"hi bugstack虫洞栈\"}", msg);
         msgBody = msg.build();
-        System.out.println(msgBody.getChannelId());
-        System.out.println(msgBody.getMsgInfo());
+        System.out.println("channelId: " + msgBody.getChannelId());
+        System.out.println("msgInfo: " + msgBody.getMsgInfo());
 
     }
 
