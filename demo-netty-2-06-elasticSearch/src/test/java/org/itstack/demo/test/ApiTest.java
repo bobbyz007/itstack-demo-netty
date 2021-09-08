@@ -49,7 +49,7 @@ public class ApiTest {
                 }
             });
             ChannelFuture f = b.connect("127.0.0.1", 7397).sync();
-            System.out.println("itstack-demo-netty client start done. {关注公众号：bugstack虫洞栈，获取源码}");
+            System.out.println("itstack-demo-netty client start done.");
 
             TransportProtocol tp1 = new TransportProtocol(1, new User(UUID.randomUUID().toString(), "李小明", 1, "T0-1", new Date(), "13566668888", "184172133@qq.com", "北京"));
             TransportProtocol tp2 = new TransportProtocol(1, new User(UUID.randomUUID().toString(), "张大明", 2, "T0-2", new Date(), "13566660001", "huahua@qq.com", "南京"));
@@ -67,7 +67,7 @@ public class ApiTest {
             //向服务端发送信息
             f.channel().writeAndFlush(tp1);
             f.channel().writeAndFlush(tp2);
-            f.channel().writeAndFlush(tp3);
+            /*f.channel().writeAndFlush(tp3);
             f.channel().writeAndFlush(tp4);
             f.channel().writeAndFlush(tp5);
             f.channel().writeAndFlush(tp6);
@@ -76,7 +76,7 @@ public class ApiTest {
             f.channel().writeAndFlush(tp9);
             f.channel().writeAndFlush(tp10);
             f.channel().writeAndFlush(tp11);
-            f.channel().writeAndFlush(tp12);
+            f.channel().writeAndFlush(tp12);*/
 
             f.channel().closeFuture().syncUninterruptibly();
         } catch (InterruptedException e) {

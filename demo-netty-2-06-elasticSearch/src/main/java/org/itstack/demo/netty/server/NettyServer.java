@@ -32,7 +32,7 @@ public class NettyServer {
     private final EventLoopGroup childGroup = new NioEventLoopGroup();
     private Channel channel;
 
-    public ChannelFuture bing(InetSocketAddress address) {
+    public ChannelFuture bind(InetSocketAddress address) {
         ChannelFuture channelFuture = null;
         try {
             ServerBootstrap b = new ServerBootstrap();
@@ -47,9 +47,9 @@ public class NettyServer {
             logger.error(e.getMessage());
         } finally {
             if (null != channelFuture && channelFuture.isSuccess()) {
-                logger.info("itstack-demo-netty server start done. {关注公众号：bugstack虫洞栈，获取源码}");
+                logger.info("itstack-demo-netty server start done.");
             } else {
-                logger.error("itstack-demo-netty server start error. {关注公众号：bugstack虫洞栈，获取源码}");
+                logger.error("itstack-demo-netty server start error.");
             }
         }
         return channelFuture;

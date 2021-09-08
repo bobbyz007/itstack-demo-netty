@@ -10,7 +10,7 @@ import java.util.Date;
  * 公众号：bugstack虫洞栈  ｛获取学习源码｝
  * Create by fuzhengwei on 2019
  */
-@Document(indexName = "stack", type = "group_user")
+@Document(indexName = "stack")
 public class User {
 
     @Id

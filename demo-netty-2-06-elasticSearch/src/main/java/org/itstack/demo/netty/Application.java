@@ -37,7 +37,7 @@ public class Application implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         InetSocketAddress address = new InetSocketAddress(host, port);
-        ChannelFuture channelFuture = nettyServer.bing(address);
+        ChannelFuture channelFuture = nettyServer.bind(address);
         Runtime.getRuntime().addShutdownHook(new Thread(() -> nettyServer.destroy()));
         channelFuture.channel().closeFuture().syncUninterruptibly();
     }

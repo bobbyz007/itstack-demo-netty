@@ -22,7 +22,7 @@ import java.nio.charset.Charset;
 public class MyChannelInitializer extends ChannelInitializer<SocketChannel> {
 
     @Resource
-     private MyServerHandler myServerHandler;
+    private MyServerHandler myServerHandler;
 
     @Override
     protected void initChannel(SocketChannel channel) {
