@@ -12,8 +12,9 @@
     <artifactId>itstack-demo-netty-2-03</artifactId>
 
     <properties>
-        <protostuff.version>1.0.10</protostuff.version>
-        <objenesis.version>2.4</objenesis.version>
+        <protostuff.version>1.1.6</protostuff.version>
+        <objenesis.version>3.2</objenesis.version>
+        <fastjson.version>1.2.78</fastjson.version>
     </properties>
 
     <dependencies>
@@ -37,7 +38,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.58</version>
+            <version>${fastjson.version}</version>
         </dependency>
     </dependencies>
     
