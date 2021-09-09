@@ -77,12 +77,12 @@ public class SyncWriteFuture implements WriteFuture<Response> {
         return false;
     }
 
-    public Response get() throws InterruptedException, ExecutionException {
+    public Response get() throws InterruptedException {
         latch.wait();
         return response;
     }
 
-    public Response get(long timeout, TimeUnit unit) throws InterruptedException, ExecutionException, TimeoutException {
+    public Response get(long timeout, TimeUnit unit) throws InterruptedException {
         if (latch.await(timeout, unit)) {
             return response;
         }

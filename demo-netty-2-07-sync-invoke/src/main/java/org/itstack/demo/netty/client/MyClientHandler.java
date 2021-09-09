@@ -19,6 +19,7 @@ public class MyClientHandler extends ChannelInboundHandlerAdapter {
         Response msg = (Response) obj;
         String requestId = msg.getRequestId();
         SyncWriteFuture future = (SyncWriteFuture) SyncWriteMap.syncKey.get(requestId);
+        // client端堵塞超时调用，此处设置future结果
         if (future != null) {
             future.setResponse(msg);
         }

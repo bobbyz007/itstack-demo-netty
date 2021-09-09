@@ -18,7 +18,6 @@ public class StartClient {
     private static ChannelFuture future;
 
     public static void main(String[] args) {
-        System.out.println("hi 微信公众号：bugstack虫洞栈");
         ClientSocket client = new ClientSocket();
         new Thread(client).start();
 
@@ -32,7 +31,7 @@ public class StartClient {
                 }
                 //构建发送参数
                 Request request = new Request();
-                request.setResult("查询｛bugstack虫洞栈｝用户信息");
+                request.setParam("查询｛bugstack虫洞栈｝用户信息");
                 SyncWrite s = new SyncWrite();
                 Response response = s.writeAndSync(future.channel(), request, 1000);
                 System.out.println("调用结果：" + JSON.toJSON(response));
