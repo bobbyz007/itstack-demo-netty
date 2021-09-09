@@ -9,11 +9,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>itstack-demo-netty-2-10</artifactId>
+    <artifactId>demo-netty-2-10-multi-protocols</artifactId>
 
     <properties>
-        <protostuff.version>1.0.10</protostuff.version>
-        <objenesis.version>2.4</objenesis.version>
+        <protostuff.version>1.1.6</protostuff.version>
+        <objenesis.version>3.2</objenesis.version>
     </properties>
 
     <dependencies>
@@ -37,7 +37,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.58</version>
+            <version>1.2.78</version>
         </dependency>
     </dependencies>
     

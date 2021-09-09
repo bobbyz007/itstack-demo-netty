@@ -31,7 +31,7 @@ public class NettyClient {
             b.option(ChannelOption.AUTO_READ, true);
             b.handler(new MyChannelInitializer());
             ChannelFuture f = b.connect(inetHost, inetPort).sync();
-            System.out.println("itstack-demo-netty client start done. {关注公众号：bugstack虫洞栈，获取源码}");
+            System.out.println("itstack-demo-netty client start done.");
 
             //测试消息，分别发放demo01、demo02、demo03
             f.channel().writeAndFlush(MsgUtil.buildMsgDemo01(f.channel().id().toString(),"你好，消息体MsgDemo01，我是https://bugstack.cn博主，付政委。这是我的公众号<bugstack虫洞栈>，欢迎关注我获取案例源码。"));

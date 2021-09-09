@@ -20,6 +20,7 @@ public class MyChannelInitializer extends ChannelInitializer<SocketChannel> {
         //对象传输处理[解码]
         channel.pipeline().addLast(new ObjDecoder());
         // 在管道中添加我们自己的接收数据实现方法
+        // 实际handler是通过继承 SimpleChannelInboundHandler 来匹配不同的消息类型。
         channel.pipeline().addLast(new MsgDemo01Handler());
         channel.pipeline().addLast(new MsgDemo02Handler());
         channel.pipeline().addLast(new MsgDemo03Handler());
