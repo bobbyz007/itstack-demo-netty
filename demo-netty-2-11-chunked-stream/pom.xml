@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>itstack-demo-netty-2-11</artifactId>
+    <artifactId>demo-netty-2-11-chunked-stream</artifactId>
 
 
 </project>
