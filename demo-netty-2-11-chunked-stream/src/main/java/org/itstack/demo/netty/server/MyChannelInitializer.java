@@ -20,7 +20,7 @@ public class MyChannelInitializer extends ChannelInitializer<SocketChannel> {
     protected void initChannel(SocketChannel channel) {
         // 基于换行符号
         channel.pipeline().addLast(new LineBasedFrameDecoder(1024));
-        // 流量分块：一般用于文件传输
+        // 流量分块：一般用于大文件传输，普通的短消息无必要
         channel.pipeline().addLast(new ChunkedWriteHandler());
         channel.pipeline().addLast(new MyServerChunkHandler());
         // 解码转String，注意调整自己的编码格式GBK、UTF-8
