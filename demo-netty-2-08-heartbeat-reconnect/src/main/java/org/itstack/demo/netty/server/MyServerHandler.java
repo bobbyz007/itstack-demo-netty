@@ -22,15 +22,15 @@ public class MyServerHandler extends ChannelInboundHandlerAdapter {
         if (evt instanceof IdleStateEvent) {
             IdleStateEvent e = (IdleStateEvent) evt;
             if (e.state() == IdleState.READER_IDLE) {
-                System.out.println("bugstack虫洞栈提醒=> Reader Idle");
-                ctx.writeAndFlush("读取等待：公众号bugstack虫洞栈，客户端你在吗[ctx.close()]{我结尾是一个换行符用于处理半包粘包}... ...\r\n");
+                System.out.println("提醒=> Reader Idle");
+                ctx.writeAndFlush("读取等待：客户端你在吗[ctx.close()]{我结尾是一个换行符用于处理半包粘包}... ...\r\n");
                 ctx.close();
             } else if (e.state() == IdleState.WRITER_IDLE) {
-                System.out.println("bugstack虫洞栈提醒=> Write Idle");
-                ctx.writeAndFlush("写入等待：公众号bugstack虫洞栈，客户端你在吗{我结尾是一个换行符用于处理半包粘包}... ...\r\n");
+                System.out.println("提醒=> Write Idle");
+                ctx.writeAndFlush("写入等待：客户端你在吗{我结尾是一个换行符用于处理半包粘包}... ...\r\n");
             } else if (e.state() == IdleState.ALL_IDLE) {
-                System.out.println("bugstack虫洞栈提醒=> All_IDLE");
-                ctx.writeAndFlush("全部时间：公众号bugstack虫洞栈，客户端你在吗{我结尾是一个换行符用于处理半包粘包}... ...\r\n");
+                System.out.println("提醒=> All_IDLE");
+                ctx.writeAndFlush("全部时间：客户端你在吗{我结尾是一个换行符用于处理半包粘包}... ...\r\n");
             }
         }
         ctx.flush();
@@ -43,7 +43,7 @@ public class MyServerHandler extends ChannelInboundHandlerAdapter {
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         SocketChannel channel = (SocketChannel) ctx.channel();
         System.out.println("链接报告开始");
-        System.out.println("链接报告信息：有一客户端链接到本服务端");
+        System.out.println("链接报告信息：有一客户端链接到本服务端, channelId: " + channel.id());
         System.out.println("链接报告IP:" + channel.localAddress().getHostString());
         System.out.println("链接报告Port:" + channel.localAddress().getPort());
         System.out.println("链接报告完毕");

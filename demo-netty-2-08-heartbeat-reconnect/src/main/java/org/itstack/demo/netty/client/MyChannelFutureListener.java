@@ -15,7 +15,7 @@ public class MyChannelFutureListener implements ChannelFutureListener {
     @Override
     public void operationComplete(ChannelFuture channelFuture) throws Exception {
         if (channelFuture.isSuccess()) {
-            System.out.println("itstack-demo-netty client start done. {关注公众号：bugstack虫洞栈，获取源码}");
+            System.out.println("itstack-demo-netty client start done.");
             return;
         }
         final EventLoop loop = channelFuture.channel().eventLoop();
@@ -24,10 +24,10 @@ public class MyChannelFutureListener implements ChannelFutureListener {
             public void run() {
                 try {
                     new NettyClient().connect("127.0.0.1", 7397);
-                    System.out.println("itstack-demo-netty client start done. {关注公众号：bugstack虫洞栈，获取源码}");
+                    System.out.println("itstack-demo-netty client start done. ");
                     Thread.sleep(500);
                 } catch (Exception e){
-                    System.out.println("itstack-demo-netty client start error go reconnect ... {关注公众号：bugstack虫洞栈，获取源码}");
+                    System.out.println("itstack-demo-netty client start error go reconnect ... ");
                 }
             }
         }, 1L, TimeUnit.SECONDS);

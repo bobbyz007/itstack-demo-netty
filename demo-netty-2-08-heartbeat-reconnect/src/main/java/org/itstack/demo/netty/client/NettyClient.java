@@ -27,6 +27,7 @@ public class NettyClient {
             b.option(ChannelOption.AUTO_READ, true);
             b.handler(new MyChannelInitializer());
             ChannelFuture f = b.connect(inetHost, inetPort).sync();
+            // 监听ChannelFuture是否成功，不成功，则重连
             f.addListener(new MyChannelFutureListener()); //添加监听，处理重连
             f.channel().closeFuture().sync();
         } catch (InterruptedException e) {

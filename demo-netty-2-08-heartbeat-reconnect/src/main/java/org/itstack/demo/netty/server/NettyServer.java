@@ -15,10 +15,10 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 public class NettyServer {
 
     public static void main(String[] args) {
-        new NettyServer().bing(7397);
+        new NettyServer().bind(7397);
     }
 
-    private void bing(int port) {
+    private void bind(int port) {
         //配置服务端NIO线程组
         EventLoopGroup parentGroup = new NioEventLoopGroup(); //NioEventLoopGroup extends MultithreadEventLoopGroup Math.max(1, SystemPropertyUtil.getInt("io.netty.eventLoopThreads", NettyRuntime.availableProcessors() * 2));
         EventLoopGroup childGroup = new NioEventLoopGroup();
@@ -29,7 +29,7 @@ public class NettyServer {
                     .option(ChannelOption.SO_BACKLOG, 128)
                     .childHandler(new MyChannelInitializer());
             ChannelFuture f = b.bind(port).sync();
-            System.out.println("itstack-demo-netty server start done. {关注公众号：bugstack虫洞栈，获取源码}");
+            System.out.println("itstack-demo-netty server start done. ");
             f.channel().closeFuture().sync();
         } catch (InterruptedException e) {
             e.printStackTrace();
