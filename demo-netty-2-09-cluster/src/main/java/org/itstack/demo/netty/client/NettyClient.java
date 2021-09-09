@@ -14,9 +14,10 @@ import org.itstack.demo.netty.util.MsgUtil;
  * Create by fuzhengwei on 2019
  */
 public class NettyClient {
-
+    static String serverAcceptChanneldId;
     public static void main(String[] args) {
-        new NettyClient().connect("127.0.0.1", 7397);
+        serverAcceptChanneldId = args.length == 1 ? "nothing" : args[1];
+        new NettyClient().connect("127.0.0.1", Integer.valueOf(args[0]));
     }
 
     private void connect(String inetHost, int inetPort) {
@@ -30,11 +31,7 @@ public class NettyClient {
             ChannelFuture f = b.connect(inetHost, inetPort).sync();
             System.out.println("itstack-demo-netty client start done. ");
 
-            f.channel().writeAndFlush(MsgUtil.buildMsg(f.channel().id().toString(),"你好，使用protobuf通信格式的服务端。"));
-            f.channel().writeAndFlush(MsgUtil.buildMsg(f.channel().id().toString(),"你好，使用protobuf通信格式的服务端。"));
-            // f.channel().writeAndFlush(MsgUtil.buildMsg(f.channel().id().toString(),"你好，使用protobuf通信格式的服务端。"));
-            // f.channel().writeAndFlush(MsgUtil.buildMsg(f.channel().id().toString(),"你好，使用protobuf通信格式的服务端。"));
-            // f.channel().writeAndFlush(MsgUtil.buildMsg(f.channel().id().toString(),"你好，使用protobuf通信格式的服务端。"));
+            f.channel().writeAndFlush(String.format("{\"content\":\"justin here\",\"toChannelId\":\"%s\"}\r\n", serverAcceptChanneldId));
 
             f.channel().closeFuture().sync();
         } catch (InterruptedException e) {

@@ -4,6 +4,8 @@ import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.socket.SocketChannel;
+import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.channel.socket.nio.NioSocketChannel;
 import org.itstack.demo.netty.domain.MsgAgreement;
 import org.itstack.demo.netty.domain.UserChannelInfo;
 import org.itstack.demo.netty.service.ExtServerService;
@@ -36,7 +38,13 @@ public class MyServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         SocketChannel channel = (SocketChannel) ctx.channel();
+
         System.out.println("链接报告开始");
+        if (channel instanceof NioServerSocketChannel) {
+            System.out.println("NioServerSocketChannel: true");
+        } else if (channel instanceof NioSocketChannel) {
+            System.out.println("NioSocketChannel: true");
+        }
         System.out.println("链接报告信息：有一客户端链接到本服务端。channelId：" + channel.id());
         System.out.println("链接报告IP:" + channel.localAddress().getHostString());
         System.out.println("链接报告Port:" + channel.localAddress().getPort());
@@ -49,7 +57,6 @@ public class MyServerHandler extends ChannelInboundHandlerAdapter {
         //通知客户端链接建立成功
         String str = "通知客户端链接建立成功" + " " + new Date() + " " + channel.localAddress().getHostString() + "\r\n";
         ctx.writeAndFlush(MsgUtil.buildMsg(channel.id().toString(), str));
-
     }
 
     /**
@@ -76,7 +83,8 @@ public class MyServerHandler extends ChannelInboundHandlerAdapter {
             channel.writeAndFlush(MsgUtil.obj2Json(msgAgreement));
             return;
         }
-        //如果为NULL则接收消息的用户不在本服务端，需要push消息给全局
+        //如果为NULL则接收消息的用户不在本服务端，需要push消息给全局，
+        // TODO 存在转发风暴???
         logger.info("接收消息的用户不在本服务端，PUSH！");
         extServerService.push(msgAgreement);
     }

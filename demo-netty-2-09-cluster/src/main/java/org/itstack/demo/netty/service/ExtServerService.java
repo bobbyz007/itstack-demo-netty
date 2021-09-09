@@ -3,6 +3,7 @@ package org.itstack.demo.netty.service;
 import org.itstack.demo.netty.domain.MsgAgreement;
 import org.itstack.demo.netty.redis.Publisher;
 import org.itstack.demo.netty.redis.RedisUtil;
+import org.itstack.demo.netty.util.Constant;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -23,7 +24,7 @@ public class ExtServerService {
     private RedisUtil redisUtil;
 
     public void push(MsgAgreement msgAgreement){
-        publisher.pushMessage("itstack-demo-netty-push-msgAgreement", msgAgreement);
+        publisher.pushMessage(Constant.TOPIC_NAME, msgAgreement);
     }
 
     public RedisUtil getRedisUtil() {

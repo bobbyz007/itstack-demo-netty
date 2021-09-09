@@ -16,13 +16,13 @@ import java.util.Map;
  */
 public class CacheUtil {
 
-    // 缓存channel
+    // 缓存channel: channel id <--> channel
     public static Map<String, Channel> cacheChannel = Collections.synchronizedMap(new HashMap<String, Channel>());
 
-    // 缓存服务信息
+    // 缓存服务信息: port <--> server info
     public static Map<Integer, ServerInfo> serverInfoMap = Collections.synchronizedMap(new HashMap<Integer, ServerInfo>());
 
-    // 缓存服务端
+    // 缓存服务端: port <--> netty server
     public static Map<Integer, NettyServer> serverMap = Collections.synchronizedMap(new HashMap<Integer, NettyServer>());
 
 }

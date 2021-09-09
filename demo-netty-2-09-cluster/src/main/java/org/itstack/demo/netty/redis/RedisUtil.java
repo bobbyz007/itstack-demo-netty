@@ -2,6 +2,7 @@ package org.itstack.demo.netty.redis;
 
 import com.alibaba.fastjson.JSON;
 import org.itstack.demo.netty.domain.UserChannelInfo;
+import org.itstack.demo.netty.util.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
@@ -16,16 +17,15 @@ import java.util.List;
  */
 @Service("redisUtil")
 public class RedisUtil {
-
     @Autowired
     private StringRedisTemplate redisTemplate;
 
     public void pushObj(UserChannelInfo userChannelInfo) {
-        redisTemplate.opsForHash().put("itstack-demo-netty-2-09-user", userChannelInfo.getChannelId(), JSON.toJSONString(userChannelInfo));
+        redisTemplate.opsForHash().put(Constant.REDIS_CHANNELS_KEY, userChannelInfo.getChannelId(), JSON.toJSONString(userChannelInfo));
     }
 
     public List<UserChannelInfo> popList() {
-        List<Object> values = redisTemplate.opsForHash().values("itstack-demo-netty-2-09-user");
+        List<Object> values = redisTemplate.opsForHash().values(Constant.REDIS_CHANNELS_KEY);
         if (null == values) return new ArrayList<>();
         List<UserChannelInfo> userChannelInfoList = new ArrayList<>();
         for (Object strJson : values) {
@@ -35,11 +35,11 @@ public class RedisUtil {
     }
 
     public void remove(String channelId) {
-        redisTemplate.opsForHash().delete("itstack-demo-netty-2-09-user",channelId);
+        redisTemplate.opsForHash().delete(Constant.REDIS_CHANNELS_KEY, channelId);
     }
 
     public void clear(){
-        redisTemplate.delete("itstack-demo-netty-2-09-user");
+        redisTemplate.delete(Constant.REDIS_CHANNELS_KEY);
     }
 
 }

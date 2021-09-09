@@ -1,0 +1,16 @@
+验证netty集群： netty后端部署多个，客户端发送的消息格式如下：
+{"content":"justin here","toChannelId":"78bcc728"}\r\n
+
+当某个服务端收到上述消息后， 解析出toChannelId，并从当前后端服务缓存的channel查找是有对应的channel，
+如果有，则表示当前服务可以处理；如果没有，则需要转发给其他的后端服务来处理。
+而转发的逻辑是利用redis的publish/subscribe特性：即每个后端都订阅了同一个topic，当转发时所有后端服务都可以收到该topic信息，然后判断自己是否可以处理。
+
+注意： 只是demo演示，实际开发时注意转发风暴等等其他问题。
+
+演示步骤：
+1. 修改application.yml的端口号，分别启动两个boot服务，以及启动、停止对应的netty服务
+http://localhost:8080/index, http://localhost:8081/closeNettyServer?port=7397
+http://localhost:8081/index, http://localhost:8081/closeNettyServer?port=7398
+2. 启动一个NettyClient，连接其中一个netty服务。
+3. 启动另一个NettyClient，连接另外一个netty服务，并把上一个NettyClient的服务端连接的channel id作为main参数传入。
+4. 观察验证第一个NettyClient是否收到了消息
