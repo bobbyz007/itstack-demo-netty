@@ -27,7 +27,7 @@ public class NettyClient {
             b.option(ChannelOption.AUTO_READ, true);
             b.handler(new MyChannelInitializer());
             ChannelFuture f = b.connect(inetHost, inetPort).sync();
-            System.out.println("itstack-demo-netty client start done. {关注公众号：bugstack虫洞栈 | 获取专题案例源码}");
+            System.out.println("itstack-demo-netty client start done.");
             f.channel().closeFuture().sync();
         } catch (InterruptedException e) {
             e.printStackTrace();

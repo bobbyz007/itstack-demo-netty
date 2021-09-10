@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>itstack-demo-netty-2-12</artifactId>
+    <artifactId>demo-netty-2-12-traffic-shape</artifactId>
 
 
 </project>

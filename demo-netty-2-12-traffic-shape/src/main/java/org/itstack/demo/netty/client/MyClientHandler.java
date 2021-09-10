@@ -18,8 +18,8 @@ public class MyClientHandler extends SimpleChannelInboundHandler<String> {
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
-        System.out.println("微信公众号：bugstack虫洞栈 | NettyClient接收到消息：" + msg + " length：" + msg.length());
-        ctx.write(UUID.randomUUID().toString() + "\r\n", ctx.voidPromise());
+        System.out.println("NettyClient接收到消息：" + msg + " length：" + msg.length());
+        ctx.write(UUID.randomUUID() + "\r\n", ctx.voidPromise());
     }
 
     @Override
