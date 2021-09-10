@@ -27,9 +27,12 @@ public class NettyServer {
     private void bing(int port) throws SSLException {
 
         //引入SSL安全验证
-        File certChainFile = new File("E:\\itstack\\GIT\\itstack.org\\itstack-demo-netty\\itstack-demo-netty-2-13\\src\\main\\java\\org\\itstack\\demo\\netty\\ssl\\server\\server.crt");
-        File keyFile = new File("E:\\itstack\\GIT\\itstack.org\\itstack-demo-netty\\itstack-demo-netty-2-13\\src\\main\\java\\org\\itstack\\demo\\netty\\ssl\\server\\pkcs8_server.key");
-        File rootFile = new File("E:\\itstack\\GIT\\itstack.org\\itstack-demo-netty\\itstack-demo-netty-2-13\\src\\main\\java\\org\\itstack\\demo\\netty\\ssl\\server\\ca.crt");
+        // certChainFile: 数字证书，包含签发者，本端公钥，证书到期时间等，用于返回给客户端
+        File certChainFile = new File("D:\\workspace\\opensource\\itstack-demo-netty\\demo-netty-2-13-ssl\\src\\main\\java\\org\\itstack\\demo\\netty\\ssl\\server\\server.crt");
+        // 私钥，只在本端解密使用，不会发送给对端。
+        File keyFile = new File("D:\\workspace\\opensource\\itstack-demo-netty\\demo-netty-2-13-ssl\\src\\main\\java\\org\\itstack\\demo\\netty\\ssl\\server\\pkcs8_server.key");
+        // 根证书，用于验证其他证书的合法性
+        File rootFile = new File("D:\\workspace\\opensource\\itstack-demo-netty\\demo-netty-2-13-ssl\\src\\main\\java\\org\\itstack\\demo\\netty\\ssl\\server\\ca.crt");
         SslContext sslCtx = SslContextBuilder.forServer(certChainFile, keyFile).trustManager(rootFile).clientAuth(ClientAuth.REQUIRE).build();
 
         //配置服务端NIO线程组
@@ -42,7 +45,7 @@ public class NettyServer {
                     .option(ChannelOption.SO_BACKLOG, 128)
                     .childHandler(new MyChannelInitializer(sslCtx));
             ChannelFuture f = b.bind(port).sync();
-            System.out.println("itstack-demo-netty server start done. {关注公众号：bugstack虫洞栈 | 获取专题源码}");
+            System.out.println("itstack-demo-netty server start done.");
             f.channel().closeFuture().sync();
         } catch (InterruptedException e) {
             e.printStackTrace();
